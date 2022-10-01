@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "site": "elegant-admin",
     "ignore": [
       "firebase.json",
       "**/.*",

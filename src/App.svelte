@@ -15,6 +15,7 @@
   import EditQuestion from "./EditQuestion.svelte";
   import Teams from "./Teams.svelte";
   import EditTeam from "./EditTeam.svelte";
+  import Settings from "./Settings.svelte";
 
   export let url;
 
@@ -44,6 +45,8 @@
         <Route path="/team/edit/:id" let:params>
           <EditTeam teamId={params.id} />
         </Route>
+
+        <Route path="/settings" component={Settings} />
 
         <Route>
           <p>PAGE NOT FOUND</p>

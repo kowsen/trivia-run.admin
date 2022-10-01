@@ -7,6 +7,7 @@
   <Link to="/main-questions">Main Questions</Link>
   <Link to="/bonus-questions">Bonus Questions</Link>
   <Link to="/teams">Teams</Link>
+  <Link to="/settings">Settings</Link>
 </div>
 
 <style>

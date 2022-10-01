@@ -14,6 +14,7 @@
   import type { RequestDoc } from "./socket/trivia/base";
   import {
     setQuestionOrder,
+    upsertGuess,
     upsertQuestion,
     upsertTeam,
   } from "./socket/trivia/admin_rpcs";
@@ -38,6 +39,9 @@
     } else if (kind === "team") {
       const team = $client.teams.entities[documentId];
       await client.call(upsertTeam, { ...team, _deleted: true });
+    } else if (kind === "guess") {
+      const guess = $client.guesses.entities[documentId];
+      await client.call(upsertGuess, { ...guess, _deleted: true });
     }
     onClose();
   }
@@ -64,6 +68,13 @@
         The team will not get any notification that it's been deleted, the game
         will just stop working for them. I wouldn't use this during the game
         unless this person's been abusing the system.
+      </p>
+    {/if}
+    {#if kind === "guess"}
+      <p>
+        This'll just blank out the guess for everyone, it won't change any
+        team's standing. If you want to bump a team back, you'll need to edit
+        the team directly.
       </p>
     {/if}
   </ModalBody>

@@ -6,15 +6,16 @@
 </script>
 
 <script lang="ts">
-  import { OverflowMenu, OverflowMenuItem } from 'carbon-components-svelte';
+  import { OverflowMenu, OverflowMenuItem } from "carbon-components-svelte";
 
   export let handle: string;
   export let content: string;
   export let options: EntryMenuItem[];
   export let isSecret = false;
+  export let isSpecial = false;
 </script>
 
-<div class="entry" class:secret={isSecret}>
+<div class="entry" class:secret={isSecret} class:special={isSpecial}>
   <span class="handle header accent">{handle}</span>
   <span class="content">{content}</span>
 
@@ -41,6 +42,10 @@
       span {
         opacity: 0.7;
       }
+    }
+
+    &.special {
+      background-color: #155d3d;
     }
   }
 

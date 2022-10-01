@@ -16,6 +16,7 @@
   import Teams from "./Teams.svelte";
   import EditTeam from "./EditTeam.svelte";
   import Settings from "./Settings.svelte";
+  import Feed from "./Feed.svelte";
 
   export let url;
 
@@ -35,15 +36,23 @@
 
         <Route path="/main-questions" component={MainQuestions} />
         <Route path="/bonus-questions" component={BonusQuestions} />
-
         <Route path="/teams" component={Teams} />
+        <Route path="/feed" component={Feed} />
 
         <Route path="/question/edit/:id" let:params>
           <EditQuestion questionId={params.id} />
         </Route>
 
+        <Route path="/question/feed/:id" let:params>
+          <Feed questionId={params.id} />
+        </Route>
+
         <Route path="/team/edit/:id" let:params>
           <EditTeam teamId={params.id} />
+        </Route>
+
+        <Route path="/team/feed/:id" let:params>
+          <Feed teamId={params.id} />
         </Route>
 
         <Route path="/settings" component={Settings} />

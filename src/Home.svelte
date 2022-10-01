@@ -4,6 +4,7 @@
 
 <div class="main-links">
   <h1>Elegant Admin Panel</h1>
+  <Link to="/feed">Guess Feed</Link>
   <Link to="/main-questions">Main Questions</Link>
   <Link to="/bonus-questions">Bonus Questions</Link>
   <Link to="/teams">Teams</Link>

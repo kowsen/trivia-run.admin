@@ -12,7 +12,7 @@
   $: visiblePasswordInvalid = confirmPassword && passwordInvalid;
 
   async function callChangePassword() {
-    await client.call(setAdminPassword, { password });
+    await client.call(setAdminPassword, { adminPassword: password });
     window.localStorage.clear();
     window.location.reload();
   }

@@ -52,7 +52,7 @@
     </Router>
   </div>
 {:else}
-  <p>Connection lost, reconnecting...</p>
+  <p>Connecting...</p>
 {/if}
 
 <style>

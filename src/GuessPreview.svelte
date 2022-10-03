@@ -10,9 +10,17 @@
 
   let isDeleting = false;
 
+  function indexOf<T>(arr: T[], value: T): number | undefined {
+    const index = arr.indexOf(value);
+    if (index === -1) {
+      return undefined;
+    }
+    return index;
+  }
+
   $: question = $client.questions.entities[guess.questionId];
-  $: mainIndex = $order.main.indexOf(question._id);
-  $: bonusIndex = $order.bonus.indexOf(question._id);
+  $: mainIndex = indexOf($order.main, question._id);
+  $: bonusIndex = indexOf($order.bonus, question._id);
   $: handle =
     mainIndex !== undefined
       ? `Q${mainIndex + 1}`

@@ -17,6 +17,7 @@
   import EditTeam from "./EditTeam.svelte";
   import Settings from "./Settings.svelte";
   import Feed from "./Feed.svelte";
+  import LoadingBanner from "./util/LoadingBanner.svelte";
 
   export let url;
 
@@ -64,7 +65,7 @@
     </Router>
   </div>
 {:else}
-  <p>Connecting...</p>
+  <LoadingBanner />
 {/if}
 
 <style>

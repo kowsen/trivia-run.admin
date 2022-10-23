@@ -18,4 +18,8 @@
   .home-link {
     font-size: 36px;
   }
+
+  h2 {
+    width: 100%;
+  }
 </style>

@@ -1,6 +1,6 @@
 # Svelte + TS + Vite
 
-Test edit
+Test edit 2
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
 

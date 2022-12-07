@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "elegant-eb1c0"
+  },
+  "targets": {
+    "elegant-eb1c0": {
+      "hosting": {
+        "elegant-eb1c0": [
+          "elegant-eb1c0"
+        ]
+      }
+    }
   }
 }

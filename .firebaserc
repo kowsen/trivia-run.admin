@@ -5,7 +5,7 @@
   "targets": {
     "elegant-eb1c0": {
       "hosting": {
-        "elegant-test": [
+        "elegant-eb1c0": [
           "elegant-test"
         ]
       }

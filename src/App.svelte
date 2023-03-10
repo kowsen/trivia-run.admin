@@ -28,6 +28,7 @@
   $: connected = client.connected;
 </script>
 
+
 {#if $connected}
   <div class="content">
     <Router {url}>

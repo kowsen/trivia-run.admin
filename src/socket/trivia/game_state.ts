@@ -1,5 +1,6 @@
 import type { ActionReducerMapBuilder, EntityState, EntityAdapter } from '@reduxjs/toolkit';
 import * as toolkitRaw from '@reduxjs/toolkit';
+import type { GameState } from './admin_rpcs';
 const { combineReducers, createAction, createEntityAdapter, createReducer } = ((toolkitRaw as any).default ??
   toolkitRaw) as typeof toolkitRaw;
 
@@ -105,6 +106,12 @@ export interface GameGuess extends Doc {
   questionId: string;
   text: string;
   isCorrect: boolean;
+}
+
+
+export interface GameSettings extends Doc {
+  state: GameState;
+  refreshToken: string;
 }
 
 const DUMMY_GAME_GUESS: RequestDoc<GameGuess> = {

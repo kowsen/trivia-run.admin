@@ -7,6 +7,7 @@
 
 <script lang="ts">
   import { OverflowMenu, OverflowMenuItem } from "carbon-components-svelte";
+  import SvelteMarkdown from 'svelte-markdown'
 
   export let handle: string;
   export let content: string;
@@ -17,7 +18,7 @@
 
 <div class="entry" class:secret={isSecret} class:special={isSpecial}>
   <span class="handle header accent">{handle}</span>
-  <span class="content">{content}</span>
+  <span class="content"><SvelteMarkdown source={content} /></span>
 
   <div class="menu-container">
     <OverflowMenu size="sm" flipped={true}>

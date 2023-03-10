@@ -20,6 +20,8 @@ export interface BaseQuestion extends Doc {
   bonusWinner?: string;
 }
 
+
+
 export function generateToken(length: number): string {
   const TOKEN_SEED = 'BCDFGHJKLMNPRSTWXZ';
   let token = '';

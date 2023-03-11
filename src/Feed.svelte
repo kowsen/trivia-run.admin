@@ -12,6 +12,7 @@
   } from "unique-names-generator";
   import TeamPreview from "./TeamPreview.svelte";
   import GuessPreview from "./GuessPreview.svelte";
+  import Cookies from "js-cookie";
 
   export let teamId: string = "";
   export let questionId: string = "";
@@ -33,6 +34,7 @@
 
   $: guessPage = guesses.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
   $: maxPage = Math.ceil(guesses.length / PAGE_SIZE) - 1;
+  $: showTime = Cookies.get("guess-feed-show-time") === "true" || false;
 
   function digits(num: number, digits: number) {
     return `${num}`.padStart(digits, '0');
@@ -98,18 +100,28 @@
   function downloadCsv() {
     download("data.csv", generateCsvString());
   }
+  function toggleTime() {
+    showTime = !showTime;
+    Cookies.set("guess-feed-show-time", showTime, {
+            secure: true,
+            expires: 365,
+            path: "/",
+            sameSite: "Lax",
+          });
+  }
 </script>
 
 <div class="guesses">
   <Header>
     <div class="header-container">
       Guess Feed
+      <Button kind="secondary" size="small" on:click={toggleTime}>Toggle Time</Button>
       <Button kind="secondary" size="small" on:click={downloadCsv}>Download CSV</Button>
     </div>
   </Header>
   <div class="guess-list">
     {#each guessPage as guess}
-      <GuessPreview {guess} />
+      <GuessPreview {guess} {showTime}/>
     {/each}
     <div class="controls">
       <Button

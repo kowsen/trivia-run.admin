@@ -7,6 +7,7 @@
   import { client, order } from "./client";
 
   export let guess: AdminGuess;
+  export let showTime: boolean;
 
   let isDeleting = false;
 
@@ -30,6 +31,7 @@
 
   $: team = $client.teams.entities[guess.teamId];
   $: content = `${guess.text} (${team.name})`;
+  $: time = showTime ? guess._modified : undefined;
 
   $: options = [
     {
@@ -54,7 +56,7 @@
 </script>
 
 <div>
-  <Entry {handle} {content} {options} isSpecial={guess.isCorrect} />
+  <Entry {handle} {content} {options} {time} isSpecial={guess.isCorrect} />
   {#if isDeleting}
     <DeleteModal
       documentId={guess._id}

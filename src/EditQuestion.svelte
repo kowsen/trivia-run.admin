@@ -13,6 +13,7 @@
   import { client, order } from "./client";
   import FileField from "./FileField.svelte";
   import Header from "./Header.svelte";
+  import format from "date-fns/format";
 
   export let questionId: string;
 
@@ -122,7 +123,7 @@
   <NumberInput
     label="Unlock Time"
     placeholder="Enter Unlock Time... (optional)"
-    helperText="This takes epoch time in milliseconds. To generate a timestamp, go to epochconverter.com and copy the 'Timestamp in milliseconds' field here. A value of 0 is unlocked at all times."
+    helperText={"[" + format(unlockTime, "hh:mm:ssaaa dd/MM/yy") + "]\r\n\tThis takes epoch time in milliseconds. To generate a timestamp, go to epochconverter.com and copy the 'Timestamp in milliseconds' field here. A value of 0 is unlocked at all times."}
     bind:value={unlockTime}
   />
 

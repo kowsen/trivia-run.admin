@@ -12,7 +12,7 @@
   import format from "date-fns/format";
 
   export let handle: string;
-  export let time: number | undefined;
+  export let time: number | undefined = undefined;
   export let content: string;
   export let options: EntryMenuItem[];
   export let isSecret = false;

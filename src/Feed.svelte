@@ -12,6 +12,7 @@
   } from "unique-names-generator";
   import TeamPreview from "./TeamPreview.svelte";
   import GuessPreview from "./GuessPreview.svelte";
+  import formatISO from "date-fns/formatISO";
   import Cookies from "js-cookie";
 
   export let teamId: string = "";
@@ -88,11 +89,11 @@
 
     const guessLines = guesses.map(guess => {
       const team = teamMap[guess.teamId];
-      const fields = [buildTimestamp(guess._modified), team.name, team.isSecretTeam ?? false, stringIndexOf(mainQuestionOrder, guess.questionId), stringIndexOf(bonusQuestionOrder, guess.questionId), guess.isCorrect, guess.text];
+      const fields = [buildTimestamp(guess._modified), team.name, team.isSecretTeam ?? false, stringIndexOf(mainQuestionOrder, guess.questionId), stringIndexOf(bonusQuestionOrder, guess.questionId), guess.isCorrect, guess.text, formatISO(guess._modified)];
       return fields.map(escapeCsvEntry).join(',');
     });
 
-    const header = ['Timestamp', 'Team Name', 'Secret Team', 'Main Question', 'Bonus Question', 'Correct', 'Text'].join(',');
+    const header = ['Timestamp', 'Team Name', 'Secret Team', 'Main Question', 'Bonus Question', 'Correct', 'Text', 'Time'].join(',');
 
     return [header].concat(guessLines).join('\n');
   }
